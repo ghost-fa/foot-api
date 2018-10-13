@@ -4,9 +4,22 @@ const TeamService = require('../services/team-services')
 
 var router = express.Router();
 
-/* GET users listing. */
+/* GET list all teams */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  const teams = await TeamService.retrieve(id);
+  res.join(teams);
 });
+
+
+// Get a single team by id
+router.get('/:id', (req,res,next) =>{
+  const {id} = req.params;
+  try {
+    const team = await TeamService.retrieve(id);
+    res.join(team)
+  } catch (err) {
+    next(Boom.notFound(`No such team with id: ${id}`))
+  }
+})
 
 module.exports = router;
