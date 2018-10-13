@@ -16,6 +16,8 @@ let data;
  }else {
    data = await Team.find().exec();
  }
+
+ return data;
 }
 
 static async update(id ,data){
@@ -23,7 +25,11 @@ static async update(id ,data){
 }
 
 static async delete(id){
-
+const delet = await Team.findOneAndDelete(id).exec();
+if(!delet){
+  throw new Error('sorry cant delet data')
+}
+return delet
 }
 
 }
