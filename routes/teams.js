@@ -40,6 +40,21 @@ router.get('/:id', async(req,res,next) =>{
 });
 
 
+// Update a team
+router.put('/:id', async(req, res, next) =>{
+  const {id} = req.params;
+  try {
+    const update = await TeamService.update(id, req.body);
+    res.json(update);
+  } catch (err) {
+    if(err.name === 'ValidationError'){
+      next(Boom.badRequest(err));
+    }else {
+      next(Boom.notFound(`No such team with id: ${id}`));
+    }
+  }
+});
+
 
 
 
