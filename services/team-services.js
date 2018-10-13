@@ -7,10 +7,10 @@ class TeamService{
   static async create(data){
     const team = new Team(data);
     return await team.save();
-  }
+  };
 
 static async retrieve(id){
-let data;   
+let data;
  if(id){
    data = await Team.findById(id).exec();
  }else {
@@ -18,7 +18,7 @@ let data;
  }
 
  return data;
-}
+};
 
 
 
@@ -32,8 +32,8 @@ static async update(id ,data){
      throw new Error('cant updata updata');
    }
 
-   return team
-}
+   return team;
+};
 
 
 
@@ -45,9 +45,9 @@ if(!delet){
   throw new Error('sorry cant delet data')
 }
 return delet;
-}
+};
 
-}
+};
 
 
 

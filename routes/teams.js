@@ -55,7 +55,14 @@ router.put('/:id', async(req, res, next) =>{
 
 
 
-
-
+// Delete a team
+router.delete('/:id', async(req, res, next) =>{
+  const {id} = req.params;
+  try {
+    const delet = await TeamService.delete(id);
+  } catch (err) {
+    next(Boom.notFound(`No such team with id: ${id}`));
+  }
+});
 
 module.exports = router;
