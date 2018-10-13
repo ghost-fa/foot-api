@@ -4,6 +4,23 @@ const TeamService = require('../services/team-services')
 
 var router = express.Router();
 
+
+// Add a new team to the db
+router.post('/:id', async(req, res, next) =>{
+  try {
+    const team = await TeamService.create(req.body);
+    res.json(team)
+  } catch (err) {
+    if(err.name === 'ValidationError'){
+      next(Boom.badRequest(err));
+    }
+    next(Bomm.badImplementation(err));
+  }
+})
+
+
+
+
 /* GET list all teams */
 router.get('/', async(req, res) =>{
   const teams = await TeamService.retrieve();
@@ -21,5 +38,11 @@ router.get('/:id', async(req,res,next) =>{
     next(Boom.notFound(`No such team with id: ${id}`));
   }
 });
+
+
+
+
+
+
 
 module.exports = router;
