@@ -4,13 +4,13 @@ const db = mongoose.connection;
 const Team = require('../models/team');
 
 class TeamService{
-  static async creat(data){
+  static async create(data){
     const team = new Team(data);
     return await team.save();
   }
 
 static async retrieve(id){
-let data;
+let data;   
  if(id){
    data = await Team.findById(id).exec();
  }else {
