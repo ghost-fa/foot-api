@@ -20,16 +20,31 @@ let data;
  return data;
 }
 
-static async update(id ,data){
 
+
+
+static async update(id ,data){
+   const team = await Team.findByIdAndUpdate(id, data {
+     new : true,
+     runValidators: true
+   });
+   if(!team){
+     throw new Error('cant updata updata');
+   }
+
+   return team
 }
+
+
+
+
 
 static async delete(id){
 const delet = await Team.findOneAndDelete(id).exec();
 if(!delet){
   throw new Error('sorry cant delet data')
 }
-return delet
+return delet;
 }
 
 }
