@@ -40,6 +40,6 @@ app.use((req, res, next) =>{
     res.status(status)
       .join(message)
 
-})
+});
 
 module.exports = app;

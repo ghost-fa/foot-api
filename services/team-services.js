@@ -24,7 +24,7 @@ let data;
 
 
 static async update(id ,data){
-   const team = await Team.findByIdAndUpdate(id, data {
+   const team = await Team.findByIdAndUpdate(id, data, {
      new : true,
      runValidators: true
    });

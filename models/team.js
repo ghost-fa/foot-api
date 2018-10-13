@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const TeamSheme = new mongoose.shema({
+const TeamSheme = new mongoose.Schema({
   name: {
     type: String,
     required: true
@@ -23,6 +23,6 @@ cotch:{
 
 }
 
-})
+});
 
-module.exports = mongoose.model('Team', TeamService)
+module.exports = mongoose.model('Team', TeamSheme);
